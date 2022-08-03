@@ -3,7 +3,7 @@
 // BOTH 1 and 3 work - individual imports mean no THREE prefix
 // import * as THREE necessitates using namespace THREE prefix
 //1
-import * as THREE from '../libs/three.module.js';
+import * as THREE from '../three_v134/build/three.module.js';
 /* 2 works iff 
     <script type="importmap">
       {
@@ -19,12 +19,12 @@ import * as THREE from '../libs/three.module.js';
 //import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Vector3, BufferGeometry, Line, Color, Matrix4, Raycaster } from '../node_modules/three/build/three.module.js';
 
 // works
-import { VRButton } from '../libs/VRButton.js';
+import { VRButton } from '../three_v134/examples/jsm/webxr/VRButton.js';
 
 
 //problem!!!
 // Uncaught TypeError: Failed to resolve module specifier "three/examples/jsm/webxr/XRControllerModelFactory". Relative references must start with either "/", "./", or "../".
-import { XRControllerModelFactory } from '../libs/XRControllerModelFactory.js';
+import { XRControllerModelFactory } from '../three_v134/examples/jsm/webxr/XRControllerModelFactory.js';
 
 
 const objectUnselectedColor = new THREE.Color(0x5853e6);
