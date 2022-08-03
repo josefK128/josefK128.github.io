@@ -1,14 +1,14 @@
 {
-  "name": "web-vr",
+  "name": "ar_vr_templates",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "pure three.js webar and webvr templates and examples",
+  "main": "",
   "scripts": {
-    "start": "parcel src/index.html"
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+  },
   "devDependencies": {
-    "parcel": "^2.0.1"
   }
 }
