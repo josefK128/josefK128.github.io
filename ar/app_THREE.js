@@ -1,28 +1,28 @@
 //import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Color, MeshBasicMaterial, RingGeometry, sRGBEncoding } from 'three';  //original
 //import { ARButton } from 'three/examples/jsm/webxr/ARButton';
 
-//import * as THREE from '../node_modules/three/build/three.module.js';
-import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Color, MeshBasicMaterial, RingGeometry, sRGBEncoding } from '../node_modules/three/build/three.module.js';
+import * as THREE from '../node_modules/three/build/three.module.js';
+//import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Color, MeshBasicMaterial, RingGeometry, sRGBEncoding } from '../node_modules/three/build/three.module.js';
 
 import { ARButton } from '../node_modules/three/examples/jsm/webxr/ARButton.js';
 
 
-const objectUnselectedColor = new Color(0x5853e6);
-const objectSelectedColor = new Color(0xf0520a);
+const objectUnselectedColor = new THREE.Color(0x5853e6);
+const objectSelectedColor = new THREE.Color(0xf0520a);
 
 class App {
   constructor() {
-    this.camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     this.camera.position.set(0, 1.6, 3);
-    this.scene = new Scene();
+    this.scene = new THREE.Scene();
   
-    this.renderer = new WebGLRenderer({
+    this.renderer = new THREE.WebGLRenderer({
         antialias: true,
         alpha: true
     });
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.renderer.outputEncoding = sRGBEncoding;
+    this.renderer.outputEncoding = THREE.sRGBEncoding;
     document.body.appendChild(this.renderer.domElement);
   
     this.initXR();
@@ -44,20 +44,20 @@ class App {
   }
 
   initScene() {
-    let geometry = new RingGeometry(0.08, 0.10, 32).rotateX(-Math.PI / 2);
-    let material = new MeshBasicMaterial;
-    this.reticle = new Mesh(geometry, material);
+    let geometry = new THREE.RingGeometry(0.08, 0.10, 32).rotateX(-Math.PI / 2);
+    let material = new THREE.MeshBasicMaterial;
+    this.reticle = new THREE.Mesh(geometry, material);
     this.reticle.matrixAutoUpdate = false;
     this.reticle.visible = false;
     this.scene.add(this.reticle);
 
-    geometry = new BoxGeometry(0.1, 0.1, 0.1);
-    material = new MeshStandardMaterial({ color: 0x5853e6 });
-    this.box = new Mesh(geometry, material);
+    geometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
+    material = new THREE.MeshStandardMaterial({ color: 0x5853e6 });
+    this.box = new THREE.Mesh(geometry, material);
     this.box.visible = false;
     this.scene.add(this.box);
 
-    const light = new HemisphereLight(0xffffff, 0xbbbbff, 1);
+    const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
     light.position.set(0.5, 1, 0.25);
     this.scene.add(light);
   }
