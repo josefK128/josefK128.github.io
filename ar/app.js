@@ -2,9 +2,9 @@
 //import { ARButton } from 'three/examples/jsm/webxr/ARButton';
 
 //import * as THREE from '../node_modules/three/build/three.module.js';
-import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Color, MeshBasicMaterial, RingGeometry, sRGBEncoding } from '../node_modules/three/build/three.module.js';
+import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Color, MeshBasicMaterial, RingGeometry, sRGBEncoding } from '../libs/three.module.js';
 
-import { ARButton } from '../node_modules/three/examples/jsm/webxr/ARButton.js';
+import { ARButton } from '../libs/ARButton.js';
 
 
 const objectUnselectedColor = new Color(0x5853e6);
