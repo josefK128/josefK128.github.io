@@ -3,11 +3,11 @@
 // BOTH 1 and 3 work - individual imports mean no THREE prefix
 // import * as THREE necessitates using namespace THREE prefix
 //1
-//import * as THREE from '../node_modules/three/build/three.module.js';
+import * as THREE from '../node_modules/three/build/three.module.js';
 //2 - FAILS ?!
 //import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Vector3, BufferGeometry, Line, Color, Matrix4, Raycaster } from 'three';
 //3
-import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Vector3, BufferGeometry, Line, Color, Matrix4, Raycaster } from '../node_modules/three/build/three.module.js';
+//import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Vector3, BufferGeometry, Line, Color, Matrix4, Raycaster } from '../node_modules/three/build/three.module.js';
 
 // works
 import { VRButton } from '../node_modules/three/examples/jsm/webxr/VRButton.js';
@@ -18,17 +18,17 @@ import { VRButton } from '../node_modules/three/examples/jsm/webxr/VRButton.js';
 import { XRControllerModelFactory } from '../node_modules/three/examples/jsm/webxr/XRControllerModelFactory.js';
 
 
-const objectUnselectedColor = new Color(0x5853e6);
-const objectSelectedColor = new Color(0xf0520a);
+const objectUnselectedColor = new THREE.Color(0x5853e6);
+const objectSelectedColor = new THREE.Color(0xf0520a);
 
 class App {
   constructor() {
-    this.camera = new PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     this.camera.position.set(0, 1.6, 3);
-    this.scene = new Scene();
-    this.scene.background = new Color(0x505050);
+    this.scene = new THREE.Scene();
+    this.scene.background = new THREE.Color(0x505050);
   
-    this.renderer = new WebGLRenderer({
+    this.renderer = new THREE.WebGLRenderer({
         antialias: true
     });
     this.renderer.setPixelRatio(window.devicePixelRatio);
@@ -70,14 +70,14 @@ class App {
   initScene() {
     this.objects = [];
 
-    const boxGeometry = new BoxGeometry(0.5, 0.5, 0.5);
-    const boxMaterial = new MeshStandardMaterial({ color: objectUnselectedColor });
-    const box = new Mesh(boxGeometry, boxMaterial);
+    const boxGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+    const boxMaterial = new THREE.MeshStandardMaterial({ color: objectUnselectedColor });
+    const box = new THREE.Mesh(boxGeometry, boxMaterial);
     box.position.z = -2;
     this.objects.push(box);
     this.scene.add(box);
   
-    const light = new HemisphereLight(0xffffff, 0xbbbbff, 1);
+    const light = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
     light.position.set(0.5, 1, 0.25);
     this.scene.add(light);
   }
@@ -86,12 +86,12 @@ class App {
   buildControllers() {
     const controllerModelFactory = new XRControllerModelFactory();
   
-    const geometry = new BufferGeometry().setFromPoints([
-      new Vector3(0, 0, 0),
-      new Vector3(0, 0, -1)
+    const geometry = new THREE.BufferGeometry().setFromPoints([
+      new THREE.Vector3(0, 0, 0),
+      new THREE.Vector3(0, 0, -1)
     ]);
   
-    const line = new Line(geometry);
+    const line = new THREE.Line(geometry);
     line.scale.z = 0;
   
     const controllers = [];
@@ -118,9 +118,9 @@ class App {
       if (!controller.userData.selectPressedPrev) {
         // Select pressed
         controller.children[0].scale.z = 10;
-        const rotationMatrix = new Matrix4();
+        const rotationMatrix = new THREE.Matrix4();
         rotationMatrix.extractRotation(controller.matrixWorld);
-        const raycaster = new Raycaster();
+        const raycaster = new THREE.Raycaster();
         raycaster.ray.origin.setFromMatrixPosition(controller.matrixWorld);
         raycaster.ray.direction.set(0, 0, -1).applyMatrix4(rotationMatrix);
         const intersects = raycaster.intersectObjects(this.objects);
@@ -132,7 +132,7 @@ class App {
         }
       } else if (this.selectedObject) {
         // Move selected object so it's always the same distance from controller
-        const moveVector = controller.getWorldDirection(new Vector3()).multiplyScalar(this.selectedObjectDistance).negate();
+        const moveVector = controller.getWorldDirection(new THREE.Vector3()).multiplyScalar(this.selectedObjectDistance).negate();
         this.selectedObject.position.copy(controller.position.clone().add(moveVector));
       }
     } else if (controller.userData.selectPressedPrev) {
