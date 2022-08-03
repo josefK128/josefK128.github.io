@@ -1,13 +1,23 @@
 //import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Vector3, BufferGeometry, Line, Color, Matrix4, Raycaster } from 'three';
 
 // BOTH 1 and 3 work - individual imports mean no THREE prefix
+/* 2 works iff 
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "../node_modules/three/build/three.module.js"
+        }
+      }
+    </script>
+    is placed in the index.html (which it is)
+*/
 // import * as THREE necessitates using namespace THREE prefix
 //1
 //import * as THREE from '../node_modules/three/build/three.module.js';
-//2 - FAILS ?!
-import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Vector3, BufferGeometry, Line, Color, Matrix4, Raycaster } from 'three';
+//2 
+//import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Vector3, BufferGeometry, Line, Color, Matrix4, Raycaster } from 'three';
 //3
-//import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Vector3, BufferGeometry, Line, Color, Matrix4, Raycaster } from '../node_modules/three/build/three.module.js';
+import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Vector3, BufferGeometry, Line, Color, Matrix4, Raycaster } from '../node_modules/three/build/three.module.js';
 
 
 // works
