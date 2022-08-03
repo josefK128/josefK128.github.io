@@ -5,11 +5,10 @@
 //1
 //import * as THREE from '../node_modules/three/build/three.module.js';
 //2 - FAILS ?!
-//import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Vector3, BufferGeometry, Line, Color, Matrix4, Raycaster } from 'three';
+import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Vector3, BufferGeometry, Line, Color, Matrix4, Raycaster } from 'three';
 //3
 //import { Mesh, HemisphereLight, PerspectiveCamera, Scene, WebGLRenderer, BoxGeometry, MeshStandardMaterial, Vector3, BufferGeometry, Line, Color, Matrix4, Raycaster } from '../node_modules/three/build/three.module.js';
-//4
-https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js
+
 
 // works
 import { VRButton } from '../node_modules/three/examples/jsm/webxr/VRButton.js';
